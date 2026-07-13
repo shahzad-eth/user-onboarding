@@ -22,6 +22,7 @@ services:
       - PORT=${PORT}
       - ALLOWED_CORS=${ALLOWED_CORS}
       - HOST=${HOST}
+      - ACCESS_TOKEN_SECRET=${ACCESS_TOKEN_SECRET}
     depends_on:
       - postgres_db
     # volumes:                         # ✨ ADD THIS ENTIRE BLOCK HERE ✨

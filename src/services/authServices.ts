@@ -14,7 +14,7 @@ export default class AuthService {
         // hash the password
         const hashedPassword = await bcrypt.hash(password, 10)
 
-        // find the user in the db
+        // create the user in the db
         const user = await prisma.user.create({
             data: {
                 username, email, password: hashedPassword
@@ -45,5 +45,9 @@ export default class AuthService {
         })
 
         return accesstoken;
+    }
+
+    static findUserById = async (id: number) => {
+        return await prisma.user.findUnique({ where: { id } })
     }
 }

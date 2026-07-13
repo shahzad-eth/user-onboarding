@@ -30,7 +30,7 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
     if (err instanceof ApiError) {
         return res.status(err.statusCode).json({
-            succes: err.success,
+            success: err.success,
             message: err.message,
             errors: err.errors
         })
