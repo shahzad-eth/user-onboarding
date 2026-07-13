@@ -1,0 +1,33 @@
+services:
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: local_postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: UserManagementDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api_service:
+    build:
+      context: .
+    container_name: auth_api_backend
+    ports:
+      - "3002:3002"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - PORT=${PORT}
+      - ALLOWED_CORS=${ALLOWED_CORS}
+      - HOST=${HOST}
+    depends_on:
+      - postgres_db
+    # volumes:                         # ✨ ADD THIS ENTIRE BLOCK HERE ✨
+    #   - ./API:/usr/src/app           # Syncs your code files
+    #   - /usr/src/app/node_modules/   # Protects container's prisma/node dependencies
+    #   - /usr/src/app/dist/           # Protects container's build folder
+
+volumes:
+  postgres_data:

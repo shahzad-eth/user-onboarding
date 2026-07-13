@@ -1,0 +1,15 @@
+# Dependencies (installed fresh inside the container)
+node_modules
+
+# Build output (built fresh inside the container)
+dist
+
+# Environment files (passed via docker-compose instead)
+.env
+
+# Misc
+npm-debug.log
+Dockerfile
+.dockerignore
+.git
+.gitignore
