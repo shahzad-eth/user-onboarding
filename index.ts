@@ -10,7 +10,7 @@ try {
     console.log('✅ Database connected successfully!');
 
     app.listen(process.env.PORT || 3002, () => {
-        console.log(`App is running on port: ${process.env.PORT}`);
+        console.log(`📦 App is running on port: ${process.env.PORT}`);
     });
 } catch (error) {
     console.error("Failed to start the application", error);

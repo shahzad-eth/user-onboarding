@@ -10,9 +10,15 @@ export default class AuthService {
         const existingUser = await AuthService.findUserByEmail(email)
 
         if (existingUser) throw new ApiError(400, "User Already Exists")
+        console.log("User not found, proceeding...")
+
+        console.log("Hashing password")
 
         // hash the password
         const hashedPassword = await bcrypt.hash(password, 10)
+        console.log("Password Hashed")
+
+        console.log("Saving the User")
 
         // create the user in the db
         const user = await prisma.user.create({
@@ -20,6 +26,8 @@ export default class AuthService {
                 username, email, password: hashedPassword
             }
         });
+
+        console.log("User saved")
 
         return user;
     }

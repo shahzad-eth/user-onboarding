@@ -7,6 +7,7 @@ import type { AuthenticatedRequest } from "../utils/types.js";
 export default class AuthController {
     static signup = asyncHandler(async (req: Request, res: Response) => {
         const { username, email, password } = req.body;
+        console.log("Data Found")
 
         // To be validated by external validator middleware later
         if (!username || !email || !password) {
@@ -15,9 +16,15 @@ export default class AuthController {
             )
         }
 
+        console.log("registering user")
         const user = await AuthService.registerUser(username, email, password)
 
-        return res.status(201).json(user)
+        // excluding sensitive fields
+        const { password: extractedPassword, ...safeUser } = user;
+
+        console.log("Registration Success")
+
+        return res.status(201).json(safeUser)
     })
 
     static login = asyncHandler(async (req: Request, res: Response) => {
