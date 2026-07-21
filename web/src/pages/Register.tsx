@@ -77,43 +77,107 @@ function Register() {
     }
 
     return (
-        <div className='register-container'>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">
-                    <input type="text"
-                        onChange={handleInput}
-                        name="username"
-                        id="username"
-                        autoFocus
-                        placeholder='Enter username'
-                        value={registrationInfo.username}
-                    />
-                </label>
-                <label htmlFor="email">
-                    <input type="text"
-                        onChange={handleInput}
-                        name="email"
-                        id="email"
-                        placeholder='Enter your email'
-                        value={registrationInfo.email}
-                    />
-                </label>
-                <label htmlFor="password">
-                    <input type="password"
-                        onChange={handleInput}
-                        name="password"
-                        id="password"
-                        autoFocus
-                        placeholder='Enter password'
-                        value={registrationInfo.password}
-                    />
-                </label>
-                <button type="submit">Register</button>
-                <span>
-                    Already have an Account ?
-                    <Link to={'/auth/login'}>Login</Link>
-                </span>
-            </form>
+        <div style={{
+            display: "flex",
+            justifyContent: "center",
+            height: "100vh",
+            backgroundColor: "rgb(30 88 220)"
+        }}
+            className='register-container'
+        >
+            <div style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+            }}
+                className='form-container'>
+                <form style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: "50vh",
+                    width: "300px",
+                    border: "5px solid green",
+                    padding: "10px",
+                    margin: "20px",
+                    backgroundColor: "white",
+                    outline: "5px solid blue",
+                    borderRadius: "5px"
+                }}
+                    onSubmit={handleSubmit}>
+                    <label htmlFor="username">
+                        <input style={{
+                            padding: "10px",
+                            fontSize: "15px",
+                            border: "3px solid black",
+                            borderRadius: "5px",
+                            margin: "6px"
+                        }}
+                            type="text"
+                            onChange={handleInput}
+                            name="username"
+                            id="username"
+                            autoFocus
+                            placeholder='Enter username'
+                            value={registrationInfo.username}
+                        />
+                    </label>
+                    <label htmlFor="email">
+                        <input style={{
+                            padding: "10px",
+                            fontSize: "15px",
+                            border: "3px solid black",
+                            borderRadius: "5px",
+                            margin: "6px"
+                        }}
+                            type="text"
+                            onChange={handleInput}
+                            name="email"
+                            id="email"
+                            placeholder='Enter your email'
+                            value={registrationInfo.email}
+                        />
+                    </label>
+                    <label htmlFor="password">
+                        <input style={{
+                            padding: "10px",
+                            fontSize: "15px",
+                            border: "3px solid black",
+                            borderRadius: "5px",
+                            margin: "6px"
+                        }}
+                            type="password"
+                            onChange={handleInput}
+                            name="password"
+                            id="password"
+                            autoFocus
+                            placeholder='Enter password'
+                            value={registrationInfo.password}
+                        />
+                    </label>
+                    <button style={{
+                        padding: "10px",
+                        fontSize: "15px",
+                        border: "3px solid black",
+                        borderRadius: "5px",
+                        margin: "6px"
+                    }}
+                        type="submit">Register</button>
+                    <span style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "10px",
+                        fontSize: "18px",
+                        margin: "6px",
+                        textDecoration: "underline",
+                    }}
+                    >
+                        Already have an Account ?
+                        <Link to={'/login'}>Login</Link>
+                    </span>
+                </form>
+            </div>
         </div>
     )
 }

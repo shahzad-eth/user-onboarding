@@ -17,6 +17,7 @@ function Login() {
         password: ""
     })
     const [error, setError] = useState<FormValidationError>({})
+    // const [isLoggedIn, setIsLoggedIn] = useState<string>("")
     const navigate = useNavigate()
 
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -54,13 +55,15 @@ function Login() {
                 const url = "http://localhost:3002/api/auth/login"
                 const response = await fetch(url, {
                     method: "POST",
+                    credentials: "include",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(loginInfo)
                 })
                 const result = await response.json()
                 console.log(result)
+                // setIsLoggedIn(result)
                 setTimeout(() => {
-                    navigate('/')
+                    navigate('/me')
                 }, 1500);
             } catch (error) {
                 console.log(error)
@@ -161,7 +164,7 @@ function Login() {
                                 margin: "6px",
                                 textAlign: "center"
                             }}
-                            to={'/auth/register'}> Register</Link>
+                            to={'/register'}> Register</Link>
                     </span>
                 </form>
             </div>

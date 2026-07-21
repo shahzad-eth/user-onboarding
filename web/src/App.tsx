@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
 import Login from './pages/Login'
@@ -11,10 +11,10 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path='/' element={<Navigate to={"/auth/login"} />} />
-        <Route path='/auth/login' element={<Login />} />
-        <Route path='/auth/register' element={<Register />} />
-        <Route path='/' element={<Home />} />
+        {/* <Route path='/' element={<Navigate to={"/auth/login"} />} /> */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/me' element={<Home />} />
       </Routes>
     </div>
   )

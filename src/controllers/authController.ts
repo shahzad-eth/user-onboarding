@@ -30,9 +30,17 @@ export default class AuthController {
     static login = asyncHandler(async (req: Request, res: Response) => {
         const { email, password } = req.body;
 
-        const jwtToken = await AuthService.loginUser(email, password);
+        const accessToken = await AuthService.loginUser(email, password);
 
-        return res.status(200).json({ jwtToken })
+        const options = {
+            httpOnly: true,
+            secure: false
+        }
+
+        return res
+            .status(200)
+            .cookie("accessToken", accessToken, options)
+            .json({ accessToken })
     })
 
     static getUserById = asyncHandler(async (req: AuthenticatedRequest, res: Response) => {
